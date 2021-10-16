@@ -219,14 +219,14 @@ const battle = (canvas, objects, level) => ({
 
         // add text to update timestep, number of units
         this.ctx.font = "30px Arial";
-        this.ctx.strokeText("BattleSimulator", this.field.width - 220, 30);
+        //this.ctx.strokeText("BattleSimulator", this.field.width - 220, 30);
 
         // add counter at bottom right
-        let stats = ("Republic: " + this._r_alive.length + " CIS: "
-            + this._c_alive.length + " t: " + this.t + " fps: " + Math.floor(1. / this.time.freezedelta)
-            + " size(" + this.field.width + "," + this.field.height + ")");
-        this.ctx.font = "12px Arial";
-        this.ctx.strokeText(stats, this.field.width - 275, this.field.height - 20);
+        // let stats = ("Republic: " + this._r_alive.length + " CIS: "
+        //     + this._c_alive.length + " t: " + this.t + " fps: " + Math.floor(1. / this.time.freezedelta)
+        //     + " size(" + this.field.width + "," + this.field.height + ")");
+        // this.ctx.font = "12px Arial";
+        // this.ctx.strokeText(stats, this.field.width - 275, this.field.height - 20);
 
     },
 

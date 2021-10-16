@@ -65,7 +65,7 @@ class Jedi extends Unit {
             ctx.rotate(this._angle + this.lightsaber_angle);
             // draw a long rectangle stick to represent lightsaber
             ctx.fillStyle = "rgba({0},{1},{2},0.8)".format(this.lightsaber_color);
-            ctx.fillRect(0, -3, 15, 2.5);
+            ctx.fillRect(0, -3, 15, 2.5); //light saber dimensions
             ctx.restore();
 
             // draw a health bar on top if damaged

@@ -6,7 +6,7 @@ class Crit extends CanvObj {
         this.x = x;
         this.y = y;
         this.t_start = ts;
-        this.TIME_LENGTH = 60;
+        this.TIME_LENGTH = 50;
     }
 
     update(md) {
