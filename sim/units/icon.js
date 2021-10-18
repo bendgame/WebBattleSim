@@ -1,22 +1,23 @@
 // constructor
 
-class Jedi extends Unit {
+class IconI extends Unit {
     constructor(x, y, ai) {
         super(x
             , y
-            , UNIT.Jedi.SKL
-            , UNIT.Jedi.DEX
-            , UNIT.Jedi.CON
-            , UNIT.Jedi.MVS
-            , UNIT.Jedi.RANGE
-            , TEAM.REPUBLIC
-            , UNIT.Jedi.FIRERATE
-            , UNIT.Jedi.DEFLECT
+            , UNIT.IconI.SKL
+            , UNIT.IconI.DEX
+            , UNIT.IconI.CON
+            , UNIT.IconI.MVS
+            , UNIT.IconI.RANGE
+            , TEAM.CIS
+            , UNIT.IconI.FIRERATE
+            , UNIT.IconI.DEFLECT
             , ai
-            , UNIT.Jedi.ATKT
-            , UNIT.Jedi.HDMG
-            , UNIT.Jedi.MDMG
-            , UNIT.Jedi.LDMG);
+            , UNIT.IconI.ATKT
+            , UNIT.IconI.HDMG
+            , UNIT.IconI.MDMG
+            , UNIT.IconI.LDMG
+            );
         // override attributes
         this.atk_type = AttackType.MELEE;
         this.sizebot = 14;

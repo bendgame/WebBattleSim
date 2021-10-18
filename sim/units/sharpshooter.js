@@ -3,11 +3,15 @@ class CloneSharpshooter extends Unit {
     // The Sharpshooter is a projectile-firing sniper unit.
 
     constructor(x, y, ai) {
-        super(x, y, UNIT.CloneSharpshooter.ATK,
+        super(x, y, UNIT.CloneSharpshooter.SKL,
             UNIT.CloneSharpshooter.DEX, UNIT.CloneSharpshooter.CON,
             UNIT.CloneSharpshooter.MVS, UNIT.CloneSharpshooter.RANGE,
             TEAM.REPUBLIC, UNIT.CloneSharpshooter.FIRERATE,
-            UNIT.CloneSharpshooter.DEFLECT, ai);
+            UNIT.CloneSharpshooter.DEFLECT, ai
+            , UNIT.CloneSharpshooter.ATKT
+            , UNIT.CloneSharpshooter.HDMG
+            , UNIT.CloneSharpshooter.MDMG
+            , UNIT.CloneSharpshooter.LDMG);
         this.crit_modifier = 3.0;
     }
 

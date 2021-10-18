@@ -19,8 +19,12 @@ window.onload = function() {
             return new CloneSharpshooter(cw / 2, ch / 2, null);
         } else if (uname === "Jedi") {
             return new Jedi(cw / 2, ch / 2, null);
-        }
+        } else if (uname === "IconI") {
+            return new IconI(cw / 2, ch / 2, null);
+        } else if (uname === "Jedi2") {
+            return new Jedi2(cw / 2, ch / 2, null);
     }
+}
 
     function generateTableHead(table) {
         let thead = table.createTHead(),

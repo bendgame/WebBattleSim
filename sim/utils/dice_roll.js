@@ -1,29 +1,29 @@
 const Dice = {
      /* Rolls a 1d3 */
      d1d3: function(){
-        return utils.randomInt(0, 3) + 1;
+        return utils.randomInt(1, 3);
     },
     
     /* Rolls a 1d6 */
     d1d6: function(){
-        return utils.randomInt(0, 6) + 1;
+        return utils.randomInt(1, 6);
     },
 
     /* Rolls a 1d8 */
     d1d8: function(){
-        return utils.randomInt(0, 8) + 1;
+        return utils.randomInt(1, 8);
     },
     /* Rolls a 1d8 */
     d1d20: function(){
-        return utils.randomInt(0, 20) + 1;
+        return utils.randomInt(1, 20);
     },
     /* Rolls a 2d6 */
     d2d6: function(){
-        return (utils.randomInt(0, 6) + 1) + (utils.randomInt(0, 6) + 1);
+        return (utils.randomInt(1, 6)) + (utils.randomInt(1, 6));
     },
     /* Rolls a 2d8 */
     d2d8: function(){
-        return (utils.randomInt(0, 8) + 1) + (utils.randomInt(0, 8) + 1);
+        return (utils.randomInt(1, 8)) + (utils.randomInt(1, 8));
     },
 
     /**

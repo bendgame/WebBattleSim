@@ -64,8 +64,10 @@ const battle = (canvas, objects, level) => ({
     level: level,
     // object array for all objects
     objects: objects,
-    // unit arrays
-    units: objects.filter(u => u instanceof Unit),
+    // unit arrays 
+    units: objects, 
+    //units.push(objects.filter(u => u instanceof Icon3)),
+    //icons: objects.filter(u => u instanceof Icon3),
     // alive unit roster
     _alive: [],
     // alive unit per team caches
@@ -171,6 +173,7 @@ const battle = (canvas, objects, level) => ({
         this.obstacles.forEach(update_f);
         // units updated first
         this.units.forEach(update_f);
+        //this.icons.forEach(update_f);
         // then turrets
         this.turrets.forEach(update_f);
         // then spawners
@@ -202,7 +205,10 @@ const battle = (canvas, objects, level) => ({
         // render obstacles first
         this.obstacles.forEach(render_f);
         // render in this order
+        
         this.units.forEach(render_f);
+        //this.icons.forEach(render_f);
+        
         this.turrets.forEach(render_f);
         this.projectiles.forEach(render_f);
 

@@ -7,7 +7,7 @@ they can move and attack primarily, towards a target of reference, using a selec
 of AI capabilities.
  */
 
-class Unit extends Combative {
+class Icon3 extends Combative {
 
     constructor(x, y, skl, dex, con, mvs, range,
                 team, fire_rate, dflr, ai, atkt, hdmg, mdmg, ldmg) {
@@ -268,6 +268,15 @@ class Unit extends Combative {
     
     // update and render defaults
 
+    
+    dealDamageFrom(source, dmg) {
+        // super.dealDamageFrom(source, dmg);
+        // we take no damage from units that we are targetting.
+        if (source !== this.target) {
+            super.dealDamageFrom(source, dmg);
+        }
+    }
+
     update(md) {
         this.alive = this.hp > 0.0;
         if (this.alive) {
@@ -279,9 +288,13 @@ class Unit extends Combative {
             // call AI
             this.ai(this, md);
         }
-        
+        if (this.isTargetInRange())
+        {
+            // update lightsaber angle
+            this.lightsaber_angle += 0.25;
+        }
     }
-    
+
     render(ctx) {
         // default rendering
         if (this.alive) {
@@ -304,6 +317,51 @@ class Unit extends Combative {
             draw.cross(ctx, this.x, this.y, this.color, this.sizebot);
         }
 
+    }
+
+    render(ctx) {
+        // default rendering
+        if (this.hp > 0.0) {
+            // hit box circle
+            // draw slightly adjusted arrow
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this._angle);
+            ctx.beginPath();
+            ctx.fillStyle = "rgba({0}, {1}, {2}, 0.9)".format(this.color);
+            let arrlen = this.sizelen / 2,
+                arrbot = this.sizebot / 2;
+            ctx.moveTo(arrlen, 2);
+            ctx.lineTo(arrlen, -2);
+            ctx.lineTo(0, -arrbot);
+            ctx.lineTo(-2, -arrbot+3);
+            ctx.lineTo(-5, -arrbot);
+            ctx.lineTo(-arrlen, -arrbot);
+            ctx.lineTo(-arrlen, arrbot);
+            ctx.lineTo(-5, arrbot);
+            ctx.lineTo(-2, arrbot-3);
+            ctx.lineTo(0, arrbot);
+            ctx.lineTo(arrlen, 2);
+            ctx.fill();
+            ctx.restore();
+
+            // draw lightsaber
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this._angle + this.lightsaber_angle);
+            // draw a long rectangle stick to represent lightsaber
+            ctx.fillStyle = "rgba({0},{1},{2},0.8)".format(this.lightsaber_color);
+            ctx.fillRect(0, -3, 15, 2.5); //light saber dimensions
+            ctx.restore();
+
+            // draw a health bar on top if damaged
+            if (this.hp < this.MAX_HP && IS_HP_DISPLAYED) {
+                draw.healthbar(ctx, this.x, this.y - 6, this.hp / this.MAX_HP);
+            }
+
+        } else {
+            draw.cross(ctx, this.x, this.y, this.color, this.sizebot);
+        }
     }
 
 }

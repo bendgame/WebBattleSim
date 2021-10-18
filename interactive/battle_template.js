@@ -2,8 +2,8 @@
 const BATTLE_TEMPLATE = {
     // default templates
     OPPOSITE_AGGRESSIVE: function(canvas, level) {
-        let g1 = unit_group.random_tile_spawn(CloneTrooper, 2, level, AI.aggressive),
-            g2 = unit_group.random_tile_spawn(B1Battledroid, 4, level, AI.aggressive),
+        let g1 = unit_group.random_tile_spawn(CloneTrooper, 1, level, AI.hit_and_run),
+            g2 = unit_group.random_tile_spawn(IconI, 1, level, AI.aggressive),
             // now concat to form units
             units = g1.concat(g2);
         return battle(canvas, units, level);

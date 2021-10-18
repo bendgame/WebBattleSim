@@ -106,8 +106,39 @@ const AI = {
 
     hit_and_run: function(u, md, next_target=ai_next_target.nearest) {
         // a hit-and-run style which relies on faster speed and longer range
-        if (Math.random() > 0.01 && u.isTargetAlive()) {
+       // console.log(u.target.atkt)
+        if (u.isTargetAlive() && u.target.atkt=="MELEE"){ //
+           
+            if ((u.speed >= u.target.speed) && (u.range > u.target.range)) {
+                
+                // we can use hit and run
+                if (u._dist > u.range) {
+                    // if we're not in range, move closer.
+                    u.move(md);
+                } else if (u._dist <= (u.target.range * utils.randomInt(1, 3))) {
+                    d = Dice.d1d8()
+                    if (d> 6){
+                        u.move(md, (-1.0 * utils.randomInt(3, 7)));
+                        
+                    } else if (d ==1){
+                        u.move(md, (1));
+                    } else {
+                        u.move(md, (-1.0));
+                    }
+
+                    // if the opponent is in range, move back.
+                    //u.move(md, -5.0);
+                } else {
+                    // otherwise attack
+                    u.attack(md);
+                }
+            } else {
+                AI._aggressive_pursue(u, md);
+            }
+
+        } else if (Math.random() > 0.01 && u.isTargetAlive() && u.target.atkt!=="MELEE") { // 
             if ((u.speed > u.target.speed) && (u.range > u.target.range)) {
+                //console.log("2")
                 // we can use hit and run
                 if (u._dist > u.range) {
                     // if we're not in range, move closer.
